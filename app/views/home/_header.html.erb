@@ -11,9 +11,25 @@
         <div class="navbar-nav">
       	<%= link_to 'Friends', friends_path, class:"nav-link" %>
       </div>
+
+  	<% if user_signed_in? %>
+      	<div class="navbar-nav">
+      		<%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:"nav-link" %>
+  		</div>
+      	<div class="navbar-nav">
+      		<%= link_to 'Edit Profile', edit_user_registration_path, class:"nav-link" %>
+      	</div>
         <div class="navbar-nav">
-      	<%= link_to 'Add Friend', new_friend_path, class:"nav-link" %>
-      </div>
+      		<%= link_to 'Add Friend', new_friend_path, class:"nav-link" %>
+      	</div>
+	<% else %>
+  		<div class="navbar-nav">
+      		<%= link_to 'Sign Up', new_user_registration_path, class:"nav-link" %>
+      	</div>
+      	<div class="navbar-nav">
+      		<%= link_to 'Sign In', new_user_session_path, class:"nav-link" %>
+      	</div>
+     <% end %>
     </div>
   </div>
 </nav>
